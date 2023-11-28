@@ -1,10 +1,15 @@
 #!/usr/bin/python3
 import random
+
+def classify_number(number):
+    if number > 0:
+        return "positive"
+    elif number == 0:
+        return "zero"
+    else:
+        return "negative"
+
 number = random.randint(-10, 10)
-if number > 0:
-    print(f"{number} is positive")
-elif number == 0:
-    print(f"{number} is zero")
-else:
-    print(f"{number} is negative
+classification = classify_number(number)
+print(f"{number} is {classification}")
 
