@@ -2,11 +2,11 @@
 import random
 def classify_number(number):
     if number > 0:
-        return "positive"
+        return ("positive")
     elif number == 0:
-        return "zero"
+        return ("zero")
     else:
-        return "negative"
+        return ("negative")
 
 number = random.randint(-10, 10)
 classification = classify_number(number)
