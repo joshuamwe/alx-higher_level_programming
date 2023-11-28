@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import random
 
+
 def classify_number(number):
     if number > 0:
         return "positive"
@@ -8,6 +9,7 @@ def classify_number(number):
         return "zero"
     else:
         return "negative"
+
 
 number = random.randint(-10, 10)
 classification = classify_number(number)
