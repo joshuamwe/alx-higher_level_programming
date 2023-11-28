@@ -11,3 +11,4 @@ def classify_number(number):
 number = random.randint(-10, 10)
 classification = classify_number(number)
 print(f"{number} is {classification}")
+
