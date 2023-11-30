@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-import sys
+    import sys
 
 def add_arguments(*args):
     result = sum(int(arg) for arg in args)
