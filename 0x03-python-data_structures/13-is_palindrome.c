@@ -1,60 +1,71 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
 
+listint_t *reverse_listint(listint_t **head);
+
 /**
- * is_palindrome - checks if a singly linked list is a palindrome
- * @head: pointer to pointer of first node of listint_t list
- * Return: 1 if palindrome, 0 otherwise
+ * reverse_listint - Reverses a singly-linked listint_t list.
+ * @head: A pointer to the starting node of the list to reverse.
+ *
+ * Return: A pointer to the head of the reversed list.
+ */
+listint_t *reverse_listint(listint_t **head)
+{
+	listint_t *node = *head, *next, *prev = NULL;
+
+	while (node)
+	{
+		next = node->next;
+		node->next = prev;
+		prev = node;
+		node = next;
+	}
+
+	*head = prev;
+	return (*head);
+}
+
+/**
+ * is_palindrome - Checks if a singly linked list is a palindrome.
+ * @head: A pointer to the head of the linked list.
+ *
+ * Return: If the linked list is not a palindrome - 0.
+ *         If the linked list is a palindrome - 1.
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head, *fast = *head, *second_half, *prev_slow = *head;
-	int result = 1;
+	listint_t *tmp, *rev, *mid;
+	size_t size = 0, i;
 
-	while (fast != NULL && fast->next != NULL)
+	if (*head == NULL || (*head)->next == NULL)
+		return (1);
+
+	tmp = *head;
+	while (tmp)
 	{
-		fast = fast->next->next;
-		prev_slow = slow;
-		slow = slow->next;
+		size++;
+		tmp = tmp->next;
 	}
-	if (fast != NULL)
+
+	tmp = *head;
+	for (i = 0; i < (size / 2) - 1; i++)
+		tmp = tmp->next;
+
+	if ((size % 2) == 0 && tmp->n != tmp->next->n)
+		return (0);
+
+	tmp = tmp->next->next;
+	rev = reverse_listint(&tmp);
+	mid = rev;
+
+	tmp = *head;
+	while (rev)
 	{
-		slow = slow->next;
+		if (tmp->n != rev->n)
+			return (0);
+		tmp = tmp->next;
+		rev = rev->next;
 	}
-	second_half = reverseList(slow);
+	reverse_listint(&mid);
 
-	while (result && second_half != NULL)
-	{
-		if ((*head)->n != second_half->n)
-		{
-			result = 0;
-		}
-
-		*head = (*head)->next;
-		second_half = second_half->next;
-	}
-	prev_slow->next = reverseList(slow);
-
-	return (result);
+	return (1);
 }
-/**
- * reverseList - main function
- * @head: para 1
- * Return: io
- */
-listint_t *reverseList(listint_t *head)
-{
-	listint_t *prev = NULL, *current = head, *next = NULL;
-
-	while (current != NULL)
-	{
-		next = current->next;
-		current->next = prev;
-		prev = current;
-		current = next;
-	}
-
-	return (prev);
-}
-
