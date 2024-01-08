@@ -1,0 +1,91 @@
+# 4-print_square.txt
+
+=============================
+How to use 4-print_square.py
+=============================
+
+This module defines a function ``print_square(size)``.
+
+=======
+Usage
+=======
+
+``print_square(...)`` prints a square with the character #.
+``size`` represents the size of the square; height and width
+
+::
+    >>> print_square = __import__('4-print_square').print_square
+    >>> print_square(1)
+    #
+    
+::
+    >>> print_square(9)
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+    #########
+
+If ``size`` is 0, the function prints nothing
+::
+   >>> print_square(0)
+
+Typecasting can be done on floats to convert them to integer
+::
+    >>> print_square(int(4.5))
+    ####
+    ####
+    ####
+    ####
+
+================
+Invalid sizes
+================
+
+The argument ``size`` must be greater than or equal to 0. Otherwise
+a ValueError is raised.
+
+::
+    >>> print_square(-9)
+    Traceback (most recent call last):
+    ValueError: size must be >= 0
+
+The argument ``size`` must be an integer. Otherwise
+a TypeError is raised.
+
+::
+    >>> print_square("alxalxalxalxalxalxalxalxal")
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+::
+    >>> print_square(-4.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+::
+    >>> print_square(None)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+Type checking occurs first then value checking follows
+::
+    >>> print_square(5.5)
+    Traceback (most recent call last):
+    TypeError: size must be an integer
+
+The function takes one parameter and at least one argument
+should be provided
+
+::
+    >>> print_square()
+    Traceback (most recent call last):
+    TypeError: print_square() missing 1 required positional argument: 'size'
+
+    >>> print_square(2, 4)
+    Traceback (most recent call last):
+    TypeError: print_square() takes 1 positional argument but 2 were given
