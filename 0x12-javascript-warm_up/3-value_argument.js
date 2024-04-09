@@ -1,5 +1,5 @@
 #!/usr/bin/node
-
+'use strict';
 const process = require('process');
 
 if (!process.argv[2]) {
