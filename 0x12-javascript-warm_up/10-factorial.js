@@ -1,5 +1,5 @@
 #!/usr/bin/node
-
+'use strict';
 function factorial (num) {
   if (isNaN(num)) {
     return 1;

@@ -1,5 +1,5 @@
 #!/usr/bin/node
-
+'use strict';
 const args = process.argv.slice(2); // Get all arguments except the first two (node path)
 const myVar = args.length;
 
